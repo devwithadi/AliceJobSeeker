@@ -282,7 +282,7 @@ Examples:
     parser.add_argument(
         '--dry-run',
         action='store_true',
-        help='Preview jobs without applying (coming soon)'
+        help='Preview jobs without applying'
     )
     
     parser.add_argument(

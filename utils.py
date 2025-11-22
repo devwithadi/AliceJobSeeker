@@ -31,6 +31,9 @@ def retry_on_exception(max_retries=3, delay=1, exceptions=(Exception,)):
         max_retries: Maximum number of retry attempts
         delay: Delay between retries in seconds
         exceptions: Tuple of exceptions to catch and retry on
+        
+    Returns:
+        Decorated function with retry logic
     """
     def decorator(func):
         @wraps(func)
