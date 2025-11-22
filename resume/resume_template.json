@@ -1,0 +1,96 @@
+{
+  "name": "Your Full Name",
+  "email": "your.email@example.com",
+  "phone": "+1-234-567-8900",
+  "current_location": "Your City, State/Country",
+  
+  "summary": "Brief professional summary highlighting your key skills and experience",
+  
+  "experience": [
+    {
+      "company": "Company Name",
+      "position": "Job Title",
+      "duration": "Jan 2020 - Present",
+      "location": "City, State",
+      "responsibilities": [
+        "Key responsibility or achievement 1",
+        "Key responsibility or achievement 2",
+        "Key responsibility or achievement 3"
+      ]
+    },
+    {
+      "company": "Previous Company",
+      "position": "Previous Job Title",
+      "duration": "Jan 2018 - Dec 2019",
+      "location": "City, State",
+      "responsibilities": [
+        "Key responsibility or achievement 1",
+        "Key responsibility or achievement 2"
+      ]
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Technology in Computer Science",
+      "institution": "University Name",
+      "year": "2018",
+      "location": "City, State"
+    }
+  ],
+  
+  "skills": {
+    "technical": [
+      "Python",
+      "JavaScript",
+      "React",
+      "Django",
+      "Flask",
+      "SQL",
+      "Git"
+    ],
+    "soft": [
+      "Communication",
+      "Team Leadership",
+      "Problem Solving",
+      "Project Management"
+    ]
+  },
+  
+  "certifications": [
+    {
+      "name": "Certification Name",
+      "issuer": "Issuing Organization",
+      "year": "2021"
+    }
+  ],
+  
+  "projects": [
+    {
+      "name": "Project Name",
+      "description": "Brief description of the project",
+      "technologies": ["Python", "React", "PostgreSQL"],
+      "link": "https://github.com/yourusername/project"
+    }
+  ],
+  
+  "languages": [
+    {
+      "language": "English",
+      "proficiency": "Native/Fluent"
+    },
+    {
+      "language": "Spanish",
+      "proficiency": "Intermediate"
+    }
+  ],
+  
+  "preferences": {
+    "notice_period": "60 days",
+    "current_salary": "8 LPA",
+    "expected_salary": "10 LPA",
+    "preferred_locations": ["Remote", "Your City"],
+    "willing_to_relocate": true,
+    "preferred_work_mode": "Hybrid"
+  }
+}

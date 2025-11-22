@@ -1,8 +1,9 @@
 /profile
 /resume/*.pdf
-/resume/*.json
+/resume/resume.json
 /logs/*
 !resume/README.md
+!resume/resume_template.json
 __pycache__/
 *.pyc
 *.pyo
