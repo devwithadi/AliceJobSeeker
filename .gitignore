@@ -1,6 +1,8 @@
 /profile
-/resume/*
+/resume/*.pdf
+/resume/*.json
 /logs/*
+!resume/README.md
 __pycache__/
 *.pyc
 *.pyo
