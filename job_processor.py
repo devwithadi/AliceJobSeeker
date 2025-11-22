@@ -530,6 +530,10 @@ def handle_company_site_application(driver, job_url, config):
     
     # Check if we should click the company site button
     external_settings = config.get("external_application_settings", {})
+    if not external_settings:
+        # Default behavior if not configured
+        external_settings = {"handle_external_redirects": False}
+    
     if external_settings.get("handle_external_redirects", False):
         try:
             company_site_buttons = driver.find_elements(By.CSS_SELECTOR, "button#company-site-button")
