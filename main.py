@@ -30,12 +30,14 @@ def load_configuration(config_file="customization.json"):
             config = json.load(f)
         
         # Validate critical configuration fields
-        if not config.get("job_search_url") or config.get("job_search_url").strip() == "":
+        job_search_url = config.get("job_search_url", "").strip()
+        if not job_search_url:
             print("ERROR: job_search_url is not configured in customization.json")
             print("Please set a valid job search URL before running.")
             return None
         
-        if not config.get("gemini_api_key") or config.get("gemini_api_key").strip() == "":
+        gemini_key = config.get("gemini_api_key", "").strip()
+        if not gemini_key:
             print("WARNING: gemini_api_key is not configured in customization.json")
             print("AI features will not work without an API key.")
             print("Get your API key from: https://makersuite.google.com/app/apikey")

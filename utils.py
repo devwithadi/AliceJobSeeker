@@ -10,6 +10,19 @@ from datetime import datetime
 from functools import wraps
 
 
+def is_empty_string(value):
+    """
+    Check if a value is None, empty string, or whitespace only
+    
+    Args:
+        value: Value to check
+    
+    Returns:
+        True if empty, False otherwise
+    """
+    return value is None or (isinstance(value, str) and value.strip() == "")
+
+
 def retry_on_exception(max_retries=3, delay=1, exceptions=(Exception,)):
     """
     Decorator to retry a function on exception
@@ -33,7 +46,6 @@ def retry_on_exception(max_retries=3, delay=1, exceptions=(Exception,)):
                         raise
                     print(f"Retry {retries}/{max_retries} for {func.__name__} after error: {e}")
                     time.sleep(delay)
-            return None
         return wrapper
     return decorator
 
@@ -339,6 +351,7 @@ class ProgressTracker:
 
 # Export all utility functions
 __all__ = [
+    'is_empty_string',
     'retry_on_exception',
     'safe_json_load',
     'safe_json_save',

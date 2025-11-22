@@ -13,6 +13,7 @@ import sys
 import time
 
 import google.generativeai as genai
+from utils import is_empty_string
 
 # Global variables - will be initialized lazily
 config = None
@@ -43,9 +44,9 @@ def _ensure_api_configured():
         
         # Get API key from environment variables with fallback to config file
         api_key = os.environ.get("GEMINI_API_KEY")
-        if not api_key:
+        if is_empty_string(api_key):
             api_key = config.get("gemini_api_key")
-            if not api_key or api_key.strip() == "":
+            if is_empty_string(api_key):
                 print("WARNING: No Gemini API key found in environment variables or config file.")
                 print("Please set the GEMINI_API_KEY environment variable or add gemini_api_key to customization.json")
                 return False
@@ -159,8 +160,8 @@ def bard_flash_response(question) -> str:
         print("ERROR: Cannot get response - API not configured")
         return "Yes"  # Return safe default
     
-    # Check for empty input
-    if not question or question.strip() == "":
+    # Check for empty input using utility function
+    if is_empty_string(question):
         print("Warning: Empty question provided to bard_flash_response")
         return "Yes"  # Return a safe default
     
