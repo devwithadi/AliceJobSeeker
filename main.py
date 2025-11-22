@@ -27,10 +27,39 @@ def load_configuration(config_file="customization.json"):
     """Load configuration from JSON file"""
     try:
         with open(config_file, 'r') as f:
-            return json.load(f)
+            config = json.load(f)
+        
+        # Validate critical configuration fields
+        if not config.get("job_search_url") or config.get("job_search_url").strip() == "":
+            print("ERROR: job_search_url is not configured in customization.json")
+            print("Please set a valid job search URL before running.")
+            return None
+        
+        if not config.get("gemini_api_key") or config.get("gemini_api_key").strip() == "":
+            print("WARNING: gemini_api_key is not configured in customization.json")
+            print("AI features will not work without an API key.")
+            print("Get your API key from: https://makersuite.google.com/app/apikey")
+        
+        # Set defaults for optional fields
+        config.setdefault("page_load_wait_time", 5)
+        config.setdefault("max_applications", 500)
+        config.setdefault("max_jobs_to_process", 500)
+        config.setdefault("max_error_count_per_job", 2)
+        config.setdefault("log_directory", "logs")
+        config.setdefault("max_retries", 3)
+        
+        return config
+    except FileNotFoundError:
+        print(f"ERROR: Configuration file not found: {config_file}")
+        print("Please create a customization.json file with your settings.")
+        print("You can use 'python cli.py --init-config' to create a sample file.")
+        return None
+    except json.JSONDecodeError as e:
+        print(f"ERROR: Invalid JSON in configuration file: {e}")
+        return None
     except Exception as e:
         print(f"Error loading configuration: {e}")
-        return {}
+        return None
 
 def load_processed_jobs(file_path="logs/processed_jobs.json"):
     """Load previously processed jobs from JSON file"""
@@ -368,6 +397,11 @@ def main():
     
     # Load configuration
     config = load_configuration()
+    
+    # Exit if configuration is invalid
+    if config is None:
+        print("\nFailed to load configuration. Exiting.")
+        return
     
     # Load resume data from PDF if configured with error handling
     try:
